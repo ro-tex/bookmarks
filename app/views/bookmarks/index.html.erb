@@ -3,8 +3,8 @@
 <div class="well">
     <h3><%= bookmark.title %></h3>
     <p>
-        <%= bookmark.url %><br/>
-        <%= bookmark.shortening %>
+        URL: <%= link_to bookmark.url.html_safe %><br/>
+        Short: <%= bookmark.shortening %>
     </p>
 </div>
 <% end %>
