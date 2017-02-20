@@ -11,8 +11,6 @@ class BookmarksController < ApplicationController
     def create
       @bookmark = Bookmark.new(bookmark_params)
       
-      # TODO build a site based on the URL
-      
       if @bookmark.save
         redirect_to bookmarks_url(@bookmark)
       else
