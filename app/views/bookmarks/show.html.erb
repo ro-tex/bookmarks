@@ -1,8 +1,8 @@
 <h3><%= @bookmark.title %></h3>
 <p>
-  URL: <%= link_to @bookmark.url.html_safe %><br />
-  Shortening: <%= @bookmark.shortening %><br /><br />
+  URL: <%= link_to @bookmark.url.html_safe, @bookmark.url.html_safe, target: '_blank' %><br />
+  Shortening: <%= link_to @bookmark.shortening.html_safe, @bookmark.shortening.html_safe, target: '_blank' %><br />
 </p>
 
-<%= link_to "Edit", edit_bookmarks_path(@bookmark), class: 'btn btn-default' %>
-<%= link_to "DELETE", bookmarks_path(@bookmark), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger' %>
+<%= link_to "Edit", edit_bookmarks_path(@bookmark), class: 'btn btn-default btn-sm' %>
+<%= link_to "DELETE", bookmarks_path(@bookmark), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger btn-sm' %>
