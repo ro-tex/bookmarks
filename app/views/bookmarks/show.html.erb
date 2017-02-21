@@ -2,6 +2,7 @@
 <p>
   URL: <%= link_to @bookmark.url.html_safe, @bookmark.url.html_safe, target: '_blank' %><br />
   Shortening: <%= link_to @bookmark.shortening.html_safe, @bookmark.shortening.html_safe, target: '_blank' %><br />
+  <%= render 'tags/tags', tags: @bookmark.tags %>
 </p>
 
 <%= link_to "Edit", edit_bookmarks_path(@bookmark), class: 'btn btn-default btn-sm' %>
