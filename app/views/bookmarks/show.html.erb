@@ -1,7 +1,8 @@
 <h3><%= @bookmark.title %></h3>
 <p>
-  URL: <%= link_to @bookmark.url.html_safe, @bookmark.url.html_safe, target: '_blank' %><br />
-  Shortening: <%= link_to @bookmark.shortening.html_safe, @bookmark.shortening.html_safe, target: '_blank' %><br />
+  URL: <%= link_to @bookmark.url.html_safe, url_with_protocol(@bookmark.url.html_safe), target: '_blank' %><br />
+  Site: <%= link_to @bookmark.site.url.html_safe, url_with_protocol(@bookmark.site.url.html_safe), target: '_blank' %><br />
+  Shortening: <%= link_to @bookmark.shortening.html_safe, url_with_protocol(@bookmark.shortening.html_safe), target: '_blank' %><br />
   <%= render 'tags/tags', tags: @bookmark.tags %>
 </p>
 

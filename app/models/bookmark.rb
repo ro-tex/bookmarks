@@ -1,3 +1,5 @@
+include BookmarksHelper
+
 class Bookmark < ApplicationRecord
   belongs_to :site
   has_and_belongs_to_many :tags
@@ -6,7 +8,9 @@ class Bookmark < ApplicationRecord
   validates :url, presence: true
 
   def save
-    self.site = Site.find_or_create_by!(url: URI.parse(self.url).host)
+    # The URI library is having difficulties if the URL doesn't start with a protocol.
+    top_level_domain = URI.parse(url_with_protocol(self.url)).host
+    self.site = Site.find_or_create_by!(url: top_level_domain)
     super
   end
 
