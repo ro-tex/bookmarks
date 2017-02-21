@@ -63,7 +63,7 @@ class BookmarksController < ApplicationController
   private
 
   def bookmark_params
-    params.require(:bookmark).permit(:title, :url, :shortening)
+    params.require(:bookmark).permit(:title, :url, :shortening, :tags)
   end
 
   def search_params
