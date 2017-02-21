@@ -19,7 +19,7 @@ class BookmarksController < ApplicationController
   end
 
   def show
-    if defined?(params) && !params[:format].nil?
+    unless params.nil? || params[:format].nil?
       @bookmark = Bookmark.find(params[:format])
     else
       @bookmarks = Bookmark.all
@@ -56,7 +56,13 @@ class BookmarksController < ApplicationController
       sql_search_pattern = search_params[:search_terms].split(' ').map{ |p| "\"%#{p}%\"" }.join(', ')
 
       # See http://stackoverflow.com/questions/12957993/how-to-use-sql-like-condition-with-multiple-values-in-postgresql
-      @bookmarks = Bookmark.where('url LIKE ANY (?) OR title LIKE ANY (?)', "{#{sql_search_pattern}}", "{#{sql_search_pattern}}")
+      @bookmarks = Bookmark.where('url LIKE ANY (?) OR title LIKE ANY (?) OR shortening LIKE ANY (?)',
+                                  "{#{sql_search_pattern}}", "{#{sql_search_pattern}}", "{#{sql_search_pattern}}")
+
+      tags = Tag.where('name LIKE ANY (?)', "{#{sql_search_pattern}}")
+      bookmarks_from_tags = tags.map{ |tag| tag.bookmarks }.flatten
+
+      @bookmarks += bookmarks_from_tags
     end
   end
 
