@@ -2,8 +2,8 @@ Rails.application.routes.draw do
 
   # We need this for the "bookmark.1" format.
   # It also needs to be above 'resources :bookmarks'.
-  resource :tags
   resource :bookmarks
+  resource :tags
 
   resources :tags
   resources :sites
