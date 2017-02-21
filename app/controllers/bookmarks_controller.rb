@@ -47,9 +47,26 @@ class BookmarksController < ApplicationController
     redirect_to bookmarks_url
   end
   
+  def search
+    unless params[:search].nil?
+      # Preserve the search query in the search bar:
+      @search = OpenStruct.new(search_terms: search_params[:search_terms])
+
+      # Should be formatted like this: '{"%AAA%", "%BBB%", "%CCC%"}'
+      sql_search_pattern = search_params[:search_terms].split(' ').map{ |p| "\"%#{p}%\"" }.join(', ')
+
+      # See http://stackoverflow.com/questions/12957993/how-to-use-sql-like-condition-with-multiple-values-in-postgresql
+      @bookmarks = Bookmark.where('url LIKE ANY (?) OR title LIKE ANY (?)', "{#{sql_search_pattern}}", "{#{sql_search_pattern}}")
+    end
+  end
+  
   private
   
   def bookmark_params
     params.require(:bookmark).permit(:title, :url, :shortening, :id)
+  end
+  
+  def search_params
+    params.require(:search).permit(:search_terms)
   end
 end
