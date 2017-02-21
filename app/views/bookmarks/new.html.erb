@@ -20,6 +20,10 @@
     <%= f.text_area(:shortening, {class: 'form-control'}) %>
 </p>
 <p>
+    <%= f.label :tags %><br />
+    <%= f.text_field(:tags, {class: 'form-control', 'data-role' => 'tagsinput', value: ''}) %>
+</p>
+<p>
     <%= f.submit({class: 'btn btn-primary'}) %>
 </p>
 <% end %>
