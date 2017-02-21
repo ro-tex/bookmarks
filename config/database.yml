@@ -5,21 +5,29 @@
 #   gem 'sqlite3'
 #
 default: &default
-  adapter: sqlite3
+  adapter: postgresql
+  host: localhost
+  port: 5432
+  database: advanon_bookmarks
+  username: advanon
+  password: T7A0CFop9l48eUAxdf1do7Be
+  encoding: unicode
   pool: 5
-  timeout: 5000
 
 development:
   <<: *default
-  database: db/development.sqlite3
+  # database: db/development.sqlite3
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: db/test.sqlite3
+  database: advanon_bookmarks_test
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  host: ec2-54-163-234-4.compute-1.amazonaws.com
+  database: df9ho89nuq4cub
+  username: jpjqlwxvgpibnp
+  password: a3c6b99289fac43e47500da6bb6766fdd84dc696c78f81e390448c31042ff8e4
