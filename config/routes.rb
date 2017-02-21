@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   # It also needs to be above 'resources :bookmarks'.
   resource :bookmarks
 
+  resources :tags
   resources :sites
   resources :bookmarks
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
