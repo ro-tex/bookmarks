@@ -8,16 +8,20 @@
 <% end %>
 
 <p>
-    <%= f.label :title %><br/>
+    <%= f.label :title %><br />
     <%= f.text_field(:title, {class: 'form-control'}) %>
 </p>
 <p>
-    <%= f.label :URL %><br/>
+    <%= f.label :URL %><br />
     <%= f.text_area(:url, {class: 'form-control'}) %>
 </p>
 <p>
-    <%= f.label :shortening %><br/>
+    <%= f.label :shortening %><br />
     <%= f.text_area(:shortening, {class: 'form-control'}) %>
+</p>
+<p>
+    <%= f.label :tags %><br />
+    <%= f.text_field(:tags, {class: 'form-control', 'data-role' => 'tagsinput', value: @bookmark.tags.pluck(:name).join(',')}) %>
 </p>
 <p>
     <%= f.submit({class: 'btn btn-primary'}) %>
