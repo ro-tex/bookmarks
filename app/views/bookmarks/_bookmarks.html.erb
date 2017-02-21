@@ -1,4 +1,4 @@
-<% if defined?(bookmarks) && !bookmarks.empty? %>
+<% unless bookmarks.nil? || bookmarks.empty? %>
   <% bookmarks.each do |bookmark| %>
     <div class="well">
         <h4><%= bookmark.title %></h4>

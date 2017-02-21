@@ -8,7 +8,7 @@ class TagsController < ApplicationController
     if defined?(params) && !params[:format].nil?
       @tag = Tag.find(params[:format])
     else
-      @tag = Tag.all
+      @tags = Tag.all
       render 'index'
     end
   end
@@ -16,6 +16,6 @@ class TagsController < ApplicationController
   private
 
   def tag_params
-    params.require(:tag).permit(:name, :id)
+    params.require(:tag).permit(:name)
   end
 end

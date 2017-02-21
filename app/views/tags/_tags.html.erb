@@ -1,4 +1,4 @@
-<% if defined?(tags) && !tags.empty? %>
+<% unless tags.nil? || tags.empty? %>
 <div class="btn-toolbar">
     <% tags.each do |tag| %>
       <%= link_to tag.name.downcase.html_safe, tags_path(tag), class: 'btn btn-info btn-xs' %>
