@@ -1,11 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  url: MyString
-  shortening: MyString
+  title: Rails Guide
+  url: http://guides.rubyonrails.org/
+  shortening: https://goo.gl/visPrq
+  tags: tech
 
 two:
-  title: MyString
-  url: MyString
-  shortening: MyString
+  title: Bootstrap
+  url: http://getbootstrap.com/components/#btn-groups-toolbar
+  shortening:
+  tags:
