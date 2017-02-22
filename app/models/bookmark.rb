@@ -8,9 +8,9 @@ class Bookmark < ApplicationRecord
   validates :url, presence: true
 
   def save
-    unless self.url.nil?
+    unless url.nil?
       # The URI library is having difficulties if the URL doesn't start with a protocol.
-      top_level_domain = URI.parse(url_with_protocol(self.url)).host
+      top_level_domain = URI.parse(url_with_protocol(url)).host
       self.site = Site.find_or_create_by!(url: top_level_domain)
     end
     super

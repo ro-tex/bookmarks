@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class BookmarkTest < ActiveSupport::TestCase
-
   test 'creation' do
     assert_not Site.exists?(url: 'www.duolingo.com'), 'Make sure a site object does not exist yet.'
 
@@ -10,7 +9,6 @@ class BookmarkTest < ActiveSupport::TestCase
 
     bookmark.title = 'Duo'
     assert_not bookmark.save, 'Saved a bookmark with a title but no URL.'
-
 
     bookmark.title = nil
     bookmark.url = 'https://www.duolingo.com/'
